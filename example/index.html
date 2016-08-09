@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon S3 Example</title>
+</head>
+<body>
+    <label for="fileUpload">File Upload</label>
+    <input type="file" id="fileUpload"/>
+    <br />
+
+    <label for="fileName">File Name</label>
+    <input type="text" id="fileName"/>
+    <br />
+
+    <button id="uploadFileBtn">Upload File</button>
+    <br />
+
+    <button id="getFileBtn">Download File</button>
+    <br />
+
+    <button id="deleteFileBtn">Delete File</button>
+    <br />
+
+    <script src="packages/s3_interop/aws-sdk-2.4.13.min.js"></script>
+    <script type="application/dart" src="main.dart"></script>
+    <script type="text/javascript" src="packages/browser/dart.js"></script>
+</body>
+</html>
