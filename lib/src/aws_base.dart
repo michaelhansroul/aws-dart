@@ -33,6 +33,7 @@ class S3 {
   external deleteObject(
       DeleteObjectRequest params, S3Callback<DeleteObjectResponse> callback);
   external listObjects(S3Callback<ListObjectV2Response> callback);
+  external headObject(HeadObjectRequest params, S3Callback callback);
 }
 
 @anonymous
@@ -68,6 +69,24 @@ class GetObjectRequest {
   external set ResponseExpires(dynamic value);
   external set VersionId(String value);
   external factory GetObjectRequest();
+}
+
+@anonymous
+@JS()
+class HeadObjectRequest {
+  String Bucket;
+  String Key;
+  String IfMatch;
+  DateTime IfModifiedSince;
+  String IfNoneMatch;
+  String IfUnmodifiedSince;
+  String Range;
+  String RequestPayer;
+  String SSECustomerAlgorithm;
+  String SSECustomerKey;
+  String SSECustomerKeyMD5;
+  String VersionId;
+  external factory HeadObjectRequest();
 }
 
 @anonymous
