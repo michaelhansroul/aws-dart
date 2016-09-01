@@ -74,18 +74,18 @@ class GetObjectRequest {
 @anonymous
 @JS()
 class HeadObjectRequest {
-  String Bucket;
-  String Key;
-  String IfMatch;
-  DateTime IfModifiedSince;
-  String IfNoneMatch;
-  String IfUnmodifiedSince;
-  String Range;
-  String RequestPayer;
-  String SSECustomerAlgorithm;
-  String SSECustomerKey;
-  String SSECustomerKeyMD5;
-  String VersionId;
+  external set Bucket(String value);
+  external set Key(String value);
+  external set IfMatch(String value);
+  external set IfModifiedSince(DateTime value);
+  external set IfNoneMatch(String value);
+  external set IfUnmodifiedSince(String value);
+  external set Range(String value);
+  external set RequestPayer(String value);
+  external set SSECustomerAlgorithm(String value);
+  external set SSECustomerKey(String value);
+  external set SSECustomerKeyMD5(String value);
+  external set VersionId(String value);
   external factory HeadObjectRequest();
 }
 
@@ -107,7 +107,6 @@ class DeleteObjectRequest {
   external set VersionId(String value);
   external factory DeleteObjectRequest();
 }
-
 
 @JS()
 class DeleteObjectResponse {}
