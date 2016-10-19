@@ -1,10 +1,11 @@
 @JS()
 library apptreeTest;
 
-import 'package:aws_interop/aws_interop.dart' as aws;
+import 'package:aws_interop/aws_sdk.dart' as aws;
 import 'dart:async';
 import 'dart:html';
 import 'package:js/js.dart';
+import 'package:jsifier/jsifier.dart';
 import 'dart:convert';
 
 Future main() async {
@@ -16,8 +17,8 @@ Future main() async {
   aws.config.credentials = new aws.Credentials(accessKey, secretKey);
   aws.config.region = region;
 
-  var params = new aws.S3Params(Bucket: bucketName, Key: "");
-  var options = new aws.S3Options(params: params);
+  var params = {'Bucket': bucketName, 'Key': ''};
+  var options = {'params': params};
   var bucket = new aws.S3(options);
   var uploadFileBtn = querySelector('#uploadFileBtn');
 
@@ -39,9 +40,10 @@ Future main() async {
     var key = (querySelector('#fileName') as InputElement).value;
     request.Key = key;
     request.Bucket = bucketName;
-    bucket.getObject(request, allowInterop((err, aws.GetObjectResponse data) {
-      print('content-type: ${data.ContentType}');
-      print('data length: ${data.Body.length}');
+    bucket.getObject(request, allowInterop((err, data) {
+      var obj = Jsifier.decode(data);
+      print('content-type: ${obj["ContentType"]}');
+      print('data length: ${obj["Body"]["length"]}');
     }));
   });
 
@@ -51,7 +53,7 @@ Future main() async {
     var request = new aws.DeleteObjectRequest();
     request.Key = key;
     request.Bucket = bucketName;
-    bucket.deleteObject(request, allowInterop((err, aws.DeleteObjectResponse data) {
+    bucket.deleteObject(request, allowInterop((err, data) {
       if (err != null) {
         print('error deleting file: $err');
         return;
