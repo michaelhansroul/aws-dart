@@ -1,6 +1,6 @@
 name: aws_interop
 description: Dart wrapper for Amazon AWS
-version: 1.2.0
+version: 2.0.0
 author: John Ryan <john.p.ryan4@gmail.com>
 homepage: https://www.github.com/johnpryan/aws-dart
 
