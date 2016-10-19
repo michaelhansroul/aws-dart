@@ -7,7 +7,7 @@
 
 /// <reference path="../node/node.d.ts" />
 
-declare module "aws-sdk" {
+declare module "AWS" {
 
     export var config: ClientConfig;
 

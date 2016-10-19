@@ -3,6 +3,7 @@ library lib.aws_sdk;
 
 import "package:js/js.dart";
 import "package:func/func.dart";
+import "aws_sdk.dart" as aws_sdk;
 
 /// Type definitions for aws-sdk
 /// Project: https://github.com/aws/aws-sdk-js
@@ -13,15 +14,15 @@ import "package:func/func.dart";
 
 /// <reference path="../node/node.d.ts" />
 
-// Module aws-sdk
-@JS("aws-sdk.config")
+// Module AWS
+@JS("AWS.config")
 external ClientConfig get config;
-@JS("aws-sdk.config")
+@JS("AWS.config")
 external set config(ClientConfig v);
-@JS("aws-sdk.Config")
+@JS("AWS.Config")
 external void Config(dynamic json);
 
-@JS("aws-sdk.Credentials")
+@JS("AWS.Credentials")
 class Credentials {
   // @Ignore
   Credentials.fakeConstructor$();
@@ -31,7 +32,7 @@ class Credentials {
   external set accessKeyId(String v);
 }
 
-@JS("aws-sdk.EnvironmentCredentials")
+@JS("AWS.EnvironmentCredentials")
 class EnvironmentCredentials extends Credentials {
   // @Ignore
   EnvironmentCredentials.fakeConstructor$() : super.fakeConstructor$();
@@ -76,7 +77,7 @@ abstract class CognitoIdentityCredentialsParams {
 }
 
 // End module CognitoIdentity
-@JS("aws-sdk.CognitoIdentityCredentials")
+@JS("AWS.CognitoIdentityCredentials")
 class CognitoIdentityCredentials extends Credentials {
   // @Ignore
   CognitoIdentityCredentials.fakeConstructor$() : super.fakeConstructor$();
@@ -118,7 +119,7 @@ abstract class HttpOptions {
       bool xhrWithCredentials});
 }
 
-@JS("aws-sdk.Endpoint")
+@JS("AWS.Endpoint")
 class Endpoint {
   // @Ignore
   Endpoint.fakeConstructor$();
@@ -184,12 +185,12 @@ abstract class BlockDeviceMapping {
   external set VirtualName(String v);
   external String get DeviceName;
   external set DeviceName(String v);
-  external Ebs get Ebs;
-  external set Ebs(Ebs v);
+  external aws_sdk.Ebs get Ebs;
+  external set Ebs(aws_sdk.Ebs v);
   external bool get NoDevice;
   external set NoDevice(bool v);
   external factory BlockDeviceMapping(
-      {String VirtualName, String DeviceName, Ebs Ebs, bool NoDevice});
+      {String VirtualName, String DeviceName, aws_sdk.Ebs Ebs, bool NoDevice});
 }
 
 @anonymous
@@ -538,7 +539,7 @@ abstract class ClientConfig implements ClientConfigPartial {
       dynamic swf});
 }
 
-@JS("aws-sdk.CloudFormation")
+@JS("AWS.CloudFormation")
 class CloudFormation {
   // @Ignore
   CloudFormation.fakeConstructor$();
@@ -597,7 +598,7 @@ class CloudFormation {
       void callback(AwsError err, dynamic data));
 }
 
-@JS("aws-sdk.Lambda")
+@JS("AWS.Lambda")
 class Lambda {
   // @Ignore
   Lambda.fakeConstructor$();
@@ -653,7 +654,7 @@ class Lambda {
       void callback(AwsError err, dynamic data));
 }
 
-@JS("aws-sdk.AutoScaling")
+@JS("AWS.AutoScaling")
 class AutoScaling {
   // @Ignore
   AutoScaling.fakeConstructor$();
@@ -777,7 +778,7 @@ class AutoScaling {
       void callback(AwsError err, dynamic data));
 }
 
-@JS("aws-sdk.SQS")
+@JS("AWS.SQS")
 class SQS {
   // @Ignore
   SQS.fakeConstructor$();
@@ -823,7 +824,7 @@ class SQS {
       void callback(AwsError err, dynamic data));
 }
 
-@JS("aws-sdk.SES")
+@JS("AWS.SES")
 class SES {
   // @Ignore
   SES.fakeConstructor$();
@@ -834,7 +835,7 @@ class SES {
       dynamic params, void callback(dynamic err, SendEmailResult data));
 }
 
-@JS("aws-sdk.SNS")
+@JS("AWS.SNS")
 class SNS {
   // @Ignore
   SNS.fakeConstructor$();
@@ -845,7 +846,7 @@ class SNS {
       PublishRequest request, void callback(dynamic err, dynamic data));
 }
 
-@JS("aws-sdk.SWF")
+@JS("AWS.SWF")
 class SWF {
   // @Ignore
   SWF.fakeConstructor$();
@@ -920,7 +921,7 @@ class SWF {
       dynamic params, void callback(dynamic err, dynamic data));
 }
 
-@JS("aws-sdk.S3")
+@JS("AWS.S3")
 class S3 {
   // @Ignore
   S3.fakeConstructor$();
@@ -961,7 +962,7 @@ class S3 {
       dynamic params, void callback(Error err, dynamic data));
 }
 
-@JS("aws-sdk.STS")
+@JS("AWS.STS")
 class STS {
   // @Ignore
   STS.fakeConstructor$();
@@ -1004,7 +1005,7 @@ class STS {
       GetSessionTokenParams params, void callback(dynamic err, dynamic data));
 }
 
-@JS("aws-sdk.ECS")
+@JS("AWS.ECS")
 class ECS {
   // @Ignore
   ECS.fakeConstructor$();
@@ -1041,7 +1042,7 @@ class ECS {
       UpdateServiceParams params, void callback(dynamic err, dynamic data));
 }
 
-@JS("aws-sdk.DynamoDB")
+@JS("AWS.DynamoDB")
 class DynamoDB {
   // @Ignore
   DynamoDB.fakeConstructor$();
@@ -1333,7 +1334,7 @@ abstract class DeleteParam implements JS$_DDBDC_Writer {
       String /*'INDEXES'|'TOTAL'|'NONE'*/ ReturnConsumedCapacity});
 }
 
-@JS("aws-sdk.DynamoDB.DocumentClient")
+@JS("AWS.DynamoDB.DocumentClient")
 class DocumentClient {
   // @Ignore
   DocumentClient.fakeConstructor$();
@@ -2446,8 +2447,8 @@ abstract class CreateAutoScalingGroupParams {
   external set TerminationPolicies(String v);
   external bool get NewInstancesProtectedFromScaleIn;
   external set NewInstancesProtectedFromScaleIn(bool v);
-  external Tags get Tags;
-  external set Tags(Tags v);
+  external aws_sdk.Tags get Tags;
+  external set Tags(aws_sdk.Tags v);
   external factory CreateAutoScalingGroupParams(
       {String AutoScalingGroupName,
       num MinSize,
@@ -2465,7 +2466,7 @@ abstract class CreateAutoScalingGroupParams {
       String VPCZoneIdentifier,
       String TerminationPolicies,
       bool NewInstancesProtectedFromScaleIn,
-      Tags Tags});
+      aws_sdk.Tags Tags});
 }
 
 @anonymous
@@ -2497,8 +2498,8 @@ abstract class CreateLaunchConfigurationParams {
   external set RamdiskId(String v);
   external List<BlockDeviceMapping> get BlockDeviceMappings;
   external set BlockDeviceMappings(List<BlockDeviceMapping> v);
-  external InstanceMonitoring get InstanceMonitoring;
-  external set InstanceMonitoring(InstanceMonitoring v);
+  external aws_sdk.InstanceMonitoring get InstanceMonitoring;
+  external set InstanceMonitoring(aws_sdk.InstanceMonitoring v);
   external String get SpotPrice;
   external set SpotPrice(String v);
   external String get IamInstanceProfile;
@@ -2521,7 +2522,7 @@ abstract class CreateLaunchConfigurationParams {
       String KernelId,
       String RamdiskId,
       List<BlockDeviceMapping> BlockDeviceMappings,
-      InstanceMonitoring InstanceMonitoring,
+      aws_sdk.InstanceMonitoring InstanceMonitoring,
       String SpotPrice,
       String IamInstanceProfile,
       bool EbsOptimized,
@@ -2531,9 +2532,9 @@ abstract class CreateLaunchConfigurationParams {
 @anonymous
 @JS()
 abstract class CreateOrUpdateTagsParams {
-  external List<Tags> get Tags;
-  external set Tags(List<Tags> v);
-  external factory CreateOrUpdateTagsParams({List<Tags> Tags});
+  external List<aws_sdk.Tags> get Tags;
+  external set Tags(List<aws_sdk.Tags> v);
+  external factory CreateOrUpdateTagsParams({List<aws_sdk.Tags> Tags});
 }
 
 @anonymous
@@ -2603,9 +2604,9 @@ abstract class DeleteScheduledActionParams {
 @anonymous
 @JS()
 abstract class DeleteTagsParams {
-  external List<Tags> get Tags;
-  external set Tags(List<Tags> v);
-  external factory DeleteTagsParams({List<Tags> Tags});
+  external List<aws_sdk.Tags> get Tags;
+  external set Tags(List<aws_sdk.Tags> v);
+  external factory DeleteTagsParams({List<aws_sdk.Tags> Tags});
 }
 
 @anonymous
@@ -3618,8 +3619,8 @@ abstract class Client {
 abstract class SendEmailRequest {
   external String get Source;
   external set Source(String v);
-  external Destination get Destination;
-  external set Destination(Destination v);
+  external aws_sdk.Destination get Destination;
+  external set Destination(aws_sdk.Destination v);
   external SES_Message get Message;
   external set Message(SES_Message v);
   external List<String> get ReplyToAddresses;
@@ -3628,13 +3629,13 @@ abstract class SendEmailRequest {
   external set ReturnPath(String v);
   external factory SendEmailRequest(
       {String Source,
-      Destination Destination,
+      aws_sdk.Destination Destination,
       SES_Message Message,
       List<String> ReplyToAddresses,
       String ReturnPath});
 }
 
-@JS("aws-sdk.SES.Destination")
+@JS("AWS.SES.Destination")
 class Destination {
   // @Ignore
   Destination.fakeConstructor$();
@@ -3646,17 +3647,17 @@ class Destination {
   external set BccAddresses(List<String> v);
 }
 
-@JS("aws-sdk.SES.Message")
+@JS("AWS.SES.Message")
 class SES_Message {
   // @Ignore
   SES_Message.fakeConstructor$();
   external Content get Subject;
   external set Subject(Content v);
-  external Body get Body;
-  external set Body(Body v);
+  external aws_sdk.Body get Body;
+  external set Body(aws_sdk.Body v);
 }
 
-@JS("aws-sdk.SES.Content")
+@JS("AWS.SES.Content")
 class Content {
   // @Ignore
   Content.fakeConstructor$();
@@ -3666,7 +3667,7 @@ class Content {
   external set Charset(String v);
 }
 
-@JS("aws-sdk.SES.Body")
+@JS("AWS.SES.Body")
 class Body {
   // @Ignore
   Body.fakeConstructor$();
@@ -3676,7 +3677,7 @@ class Body {
   external set Html(Content v);
 }
 
-@JS("aws-sdk.SES.SendEmailResult")
+@JS("AWS.SES.SendEmailResult")
 class SendEmailResult {
   // @Ignore
   SendEmailResult.fakeConstructor$();
@@ -5399,15 +5400,15 @@ abstract class ListObjectContent {
   external String /*'STANDARD'|'REDUCED_REDUNDANCY'|'GLACIER'*/ get StorageClass;
   external set StorageClass(
       String /*'STANDARD'|'REDUCED_REDUNDANCY'|'GLACIER'*/ v);
-  external Owner get Owner;
-  external set Owner(Owner v);
+  external aws_sdk.Owner get Owner;
+  external set Owner(aws_sdk.Owner v);
   external factory ListObjectContent(
       {String Key,
       DateTime LastModified,
       String ETag,
       num Size,
       String /*'STANDARD'|'REDUCED_REDUNDANCY'|'GLACIER'*/ StorageClass,
-      Owner Owner});
+      aws_sdk.Owner Owner});
 }
 
 /// This private interface contains the common parts between v1 and v2 of the API Request and is exposed via V1 and V2 subclasses
@@ -6096,13 +6097,13 @@ abstract class AssumeRoleParams {
 abstract class AssumeRoleCallbackData {
   external TemporaryCredentials get Credentials;
   external set Credentials(TemporaryCredentials v);
-  external AssumedRoleUser get AssumedRoleUser;
-  external set AssumedRoleUser(AssumedRoleUser v);
+  external aws_sdk.AssumedRoleUser get AssumedRoleUser;
+  external set AssumedRoleUser(aws_sdk.AssumedRoleUser v);
   external num get PackedPolicySize;
   external set PackedPolicySize(num v);
   external factory AssumeRoleCallbackData(
       {TemporaryCredentials Credentials,
-      AssumedRoleUser AssumedRoleUser,
+      aws_sdk.AssumedRoleUser AssumedRoleUser,
       num PackedPolicySize});
 }
 
@@ -6187,10 +6188,10 @@ abstract class CredentialsFromParams {
   external set Data(dynamic v);
 
   /// An optional credentials object to fill instead of creating a new object. Useful when modifying an existing credentials object from a refresh call.
-  external Credentials get Credentials;
-  external set Credentials(Credentials v);
+  external aws_sdk.Credentials get Credentials;
+  external set Credentials(aws_sdk.Credentials v);
   external factory CredentialsFromParams(
-      {dynamic Data, Credentials Credentials});
+      {dynamic Data, aws_sdk.Credentials Credentials});
 }
 
 @anonymous
@@ -6229,5 +6230,5 @@ abstract class GetSessionTokenParams {
 
 // End module sts
 
-// End module aws-sdk
+// End module AWS
 
