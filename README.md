@@ -19,9 +19,13 @@ Note: The committed version of this library differs from the
 `dart_js_facade_gen` output.  This is necessary until
 https://github.com/dart-lang/js_facade_gen/issues/20 is resolved.
 
+## The .min.js file
+the .min.js file has been created by running UglifyJS due to Uint8List bugs with
+the packaged .min.js file.
+
 ## Known Issues
-Loading objects from the S3 API with newer versions of the JS library
-will not return a Uint8List in non-Dartium browsers.
+Loading objects from the S3 API with newer versions, or the minified version of
+2.4.13 of the JS library will not return a Uint8List in non-Dartium browsers.
 
 ## Features and bugs
 
