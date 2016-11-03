@@ -381,10 +381,10 @@ declare module "AWS" {
         constructor(options?: any);
         endpoint: Endpoint;
 
-        getObject(params: s3.GetObjectRequest, callback?: (err: Error, data: any) => void): any;
+        getObject(params: s3.GetObjectRequest, callback?: (err: Error, data: S3Object) => void): any;
         putObject(params: s3.PutObjectRequest, callback: (err: Error, data: any) => void): void;
         deleteObject(params: s3.DeleteObjectRequest, callback: (err: Error, data: any) => void): void;
-        headObject(params: s3.HeadObjectRequest, callback: (err: Error, data: any) => void): void;
+        headObject(params: s3.HeadObjectRequest, callback: (err: Error, data: S3Object) => void): any;
         getSignedUrl(operation: string, params: any): string;
         getSignedUrl(operation: string, params: any, callback: (err: Error, url: string) => void): void;
         upload(params?: s3.PutObjectRequest, options?: s3.UploadOptions, callback?: (err: Error, data: any) => void): void;
@@ -396,6 +396,15 @@ declare module "AWS" {
         uploadPart(params: any, callback: (err: Error, data: any) => void): void;
         listParts(params: any, callback: (err: Error, data: any) => void): void;
         completeMultipartUpload(params: any, callback: (err: Error, data: any) => void): void;
+    }
+
+    export class S3Object {
+        Body: Uint8Array;
+        Metadata: S3ObjectMetadata;
+    }
+
+    export class S3ObjectMetadata {
+        expiration: string;
     }
 
     export class STS {
