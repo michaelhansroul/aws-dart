@@ -3,7 +3,9 @@ library lib.aws_sdk;
 
 import "package:js/js.dart";
 import "package:func/func.dart";
+import "dart:typed_data" show Uint8List;
 import "aws_sdk.dart" as aws_sdk;
+
 
 /// Type definitions for aws-sdk
 /// Project: https://github.com/aws/aws-sdk-js
@@ -929,13 +931,13 @@ class S3 {
   external Endpoint get endpoint;
   external set endpoint(Endpoint v);
   external dynamic getObject(GetObjectRequest params,
-      [void callback(Error err, dynamic data)]);
+      [void callback(Error err, S3Object data)]);
   external void putObject(
       PutObjectRequest params, void callback(Error err, dynamic data));
   external void deleteObject(
       DeleteObjectRequest params, void callback(Error err, dynamic data));
-  external void headObject(
-      HeadObjectRequest params, void callback(Error err, dynamic data));
+  external dynamic headObject(
+      HeadObjectRequest params, void callback(Error err, S3Object data));
   /*external String getSignedUrl(String operation, dynamic params);*/
   /*external void getSignedUrl(
     String operation, dynamic params, void callback(Error err, String url));*/
@@ -960,6 +962,24 @@ class S3 {
       dynamic params, void callback(Error err, dynamic data));
   external void completeMultipartUpload(
       dynamic params, void callback(Error err, dynamic data));
+}
+
+@JS()
+class S3Object {
+  // @Ignore
+  S3Object.fakeConstructor$();
+  external Uint8List get Body;
+  external set Body(Uint8List v);
+  external S3ObjectMetadata get Metadata;
+  external set Metadata(S3ObjectMetadata v);
+}
+
+@JS()
+class S3ObjectMetadata {
+  // @Ignore
+  S3ObjectMetadata.fakeConstructor$();
+  external String get expiration;
+  external set expiration(String v);
 }
 
 @JS("AWS.STS")
