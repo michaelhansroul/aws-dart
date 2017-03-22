@@ -932,7 +932,7 @@ class S3 {
   external set endpoint(Endpoint v);
   external dynamic getObject(GetObjectRequest params,
       [void callback(Error err, S3Object data)]);
-  external void putObject(
+  external putObject(
       PutObjectRequest params, void callback(Error err, dynamic data));
   external void deleteObject(
       DeleteObjectRequest params, void callback(Error err, dynamic data));
