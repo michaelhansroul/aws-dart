@@ -64,7 +64,7 @@ Future main() async {
 }
 
 Future<List<int>> getFileBody() async {
-  var uploadInput = querySelector('#fileUpload');
+  InputElement uploadInput = querySelector('#fileUpload');
   final files = uploadInput.files;
   if (files.length == 1) {
     final file = files[0];
@@ -73,7 +73,7 @@ Future<List<int>> getFileBody() async {
     reader.readAsDataUrl(file);
     await onDone;
     var upload = reader.result.toString().split(',').elementAt(1);
-    return BASE64.decode(upload);
+    return base64.decode(upload);
   }
   return null;
 }
